@@ -1,32 +1,52 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
+
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TodoSQLite.Views.TodoItemPage"
              Title="{Binding Name}"
              xmlns:models="clr-namespace:TodoSQLite.Models"
-             x:DataType="models:TodoItem">
-    <ScrollView>
-        <VerticalStackLayout Padding="20"
-                             Spacing="10"
-                             VerticalOptions="StartAndExpand">
-            <Label Text="Name" />
-            <Entry Text="{Binding Name}" />
-            <Label Text="Notes" />
-            <Entry Text="{Binding Notes}" />
-            <Grid ColumnDefinitions="*,Auto">
-                <Label Text="Done"
-                       VerticalTextAlignment="Center"
-                       HorizontalOptions="Fill"
-                       Grid.Column="0"/>
-                <Switch IsToggled="{Binding Done}"
-                        Grid.Column="1"/>
-            </Grid>
-            <Button Text="Save"
-                    Clicked="OnSaveClicked" />
-            <Button Text="Delete"
-                    Clicked="OnDeleteClicked" />
-            <Button Text="Cancel"
-                    Clicked="OnCancelClicked" />
-        </VerticalStackLayout>
-    </ScrollView>
+             x:DataType="models:TodoItem" >
+    <Grid RowDefinitions="*, Auto, Auto, Auto, Auto, Auto">
+        <ScrollView>
+            <VerticalStackLayout Padding="20"
+                                 Spacing="10"
+                                 VerticalOptions="StartAndExpand">
+                <Label Text="Title:" />
+                <Entry Text="{Binding Name}"
+                       Placeholder="Enter title" />
+                <Label Text="Notes:" />
+                <Editor Placeholder="Enter text"
+                        VerticalOptions="Center"
+                        AutoSize="TextChanges"
+                        Text="{Binding Notes}" />
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <Grid ColumnDefinitions="*,Auto"
+              Margin="10"
+              Grid.Row="1">
+            <Label Text="Done"
+                   VerticalTextAlignment="Center"
+                   HorizontalOptions="Fill"
+                   Grid.Column="0"
+                   Margin="20, 0" />
+            <Switch IsToggled="{Binding Done}"
+                    Grid.Column="1"
+                    Margin="20, 0" />
+        </Grid>
+
+        <Button Text="Save"
+                Clicked="OnSaveClicked"
+                Grid.Row="2"
+                Margin="10"/>
+        <Button Text="Delete"
+                Clicked="OnDeleteClicked"
+                Grid.Row="3"
+                Margin="10"/>
+        <Button Text="Cancel"
+                Clicked="OnCancelClicked"
+                Grid.Row="4"
+                Margin="10"/>
+    </Grid>
+
 </ContentPage>

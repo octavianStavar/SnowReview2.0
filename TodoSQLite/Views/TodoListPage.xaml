@@ -5,7 +5,7 @@
              x:Class="TodoSQLite.Views.TodoListPage"
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
              ios:Page.UseSafeArea="True"
-             Title="Todo">
+             Title=" ✅  SQL To Do List">
     <Grid RowDefinitions="*,Auto,Auto,Auto,Auto">
         <CollectionView
                   VerticalOptions="Fill"
@@ -17,7 +17,7 @@
                         <Grid ColumnDefinitions="*, Auto" Padding="20">
                             <Label Text="{Binding Name}"
                                    VerticalTextAlignment="Center"/>
-                            <Label Text="✔️"
+                            <Label Text="✅"
                                    Grid.Column="1"
                                    VerticalTextAlignment="Center"
                                    IsVisible="{Binding Done}"/>
@@ -26,12 +26,12 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
         <Button Grid.Row="1"
-                Text="Show Done"
-                Clicked="OnShowDone"
-                Margin="10"/>
-        <Button Grid.Row="2"
                 Text="Show To Do"
                 Clicked="OnShowNotDone"
+                Margin="10"/>
+        <Button Grid.Row="2"
+                Text="Show Done"
+                Clicked="OnShowDone"
                 Margin="10"/>
         <Button Grid.Row="3"
                 Text="Show All"
