@@ -13,8 +13,14 @@
             <Entry Text="{Binding Name}" />
             <Label Text="Notes" />
             <Entry Text="{Binding Notes}" />
-            <Label Text="Done" />
-            <Switch IsToggled="{Binding Done}" />
+            <Grid ColumnDefinitions="*,Auto">
+                <Label Text="Done"
+                       VerticalTextAlignment="Center"
+                       HorizontalOptions="Fill"
+                       Grid.Column="0"/>
+                <Switch IsToggled="{Binding Done}"
+                        Grid.Column="1"/>
+            </Grid>
             <Button Text="Save"
                     Clicked="OnSaveClicked" />
             <Button Text="Delete"
