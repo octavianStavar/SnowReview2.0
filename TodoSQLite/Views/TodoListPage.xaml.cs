@@ -15,7 +15,6 @@ public partial class TodoListPage : ContentPage
         BindingContext = this;
     }
 
-
     protected override async void OnNavigatedTo(NavigatedToEventArgs args)
     {
         base.OnNavigatedTo(args);
@@ -25,7 +24,6 @@ public partial class TodoListPage : ContentPage
             Items.Clear();
             foreach (var item in items)
                 Items.Add(item);
-
         });
     }
     async void OnItemAdded(object sender, EventArgs e)
@@ -33,6 +31,39 @@ public partial class TodoListPage : ContentPage
         await Shell.Current.GoToAsync(nameof(TodoItemPage), true, new Dictionary<string, object>
         {
             ["Item"] = new TodoItem()
+        });
+    }
+
+    async void OnShowDone(object sender, EventArgs e)
+    {
+        var items = await database.GetItemsNotDoneAsync();
+        MainThread.BeginInvokeOnMainThread(() =>
+        {
+            Items.Clear();
+            foreach (var item in items)
+                Items.Add(item);
+        });
+    }
+
+    async void OnShowNotDone(object sender, EventArgs e)
+    {
+        var items = await database.GetItemsDoneAsync();
+        MainThread.BeginInvokeOnMainThread(() =>
+        {
+            Items.Clear();
+            foreach (var item in items)
+                Items.Add(item);
+        });
+    }
+
+    async void OnShowAll(object sender, EventArgs e)
+    {
+        var items = await database.GetItemsAsync();
+        MainThread.BeginInvokeOnMainThread(() =>
+        {
+            Items.Clear();
+            foreach (var item in items)
+                Items.Add(item);
         });
     }
 

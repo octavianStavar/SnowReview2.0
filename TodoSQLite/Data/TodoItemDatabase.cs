@@ -28,9 +28,12 @@ public class TodoItemDatabase
     {
         await Init();
         return await Database.Table<TodoItem>().Where(t => t.Done).ToListAsync();
-        
-        // SQL queries are also possible
-        //return await Database.QueryAsync<TodoItem>("SELECT * FROM [TodoItem] WHERE [Done] = 0");
+    }
+
+    public async Task<List<TodoItem>> GetItemsDoneAsync()
+    {
+        await Init();
+        return await Database.QueryAsync<TodoItem>("SELECT * FROM [TodoItem] WHERE [Done] = 0");
     }
 
     public async Task<TodoItem> GetItemAsync(int id)

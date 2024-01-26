@@ -6,8 +6,8 @@
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
              ios:Page.UseSafeArea="True"
              Title="Todo">
-    <Grid RowDefinitions="*,Auto">
-        <CollectionView 
+    <Grid RowDefinitions="*,Auto,Auto,Auto,Auto">
+        <CollectionView
                   VerticalOptions="Fill"
                   ItemsSource="{Binding Items}"
                   SelectionMode="Single"
@@ -25,7 +25,22 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-        <Button Grid.Row="1" Text="Add New Item" Clicked="OnItemAdded"
-                Margin="20"/>
+        <Button Grid.Row="1"
+                Text="Show Done"
+                Clicked="OnShowDone"
+                Margin="10"/>
+        <Button Grid.Row="2"
+                Text="Show To Do"
+                Clicked="OnShowNotDone"
+                Margin="10"/>
+        <Button Grid.Row="3"
+                Text="Show All"
+                Clicked="OnShowAll"
+                Margin="10"/>
+        <Button Grid.Row="4"
+                Text="Add New Item"
+                Clicked="OnItemAdded"
+                Margin="10"/>
+
     </Grid>
 </ContentPage>
