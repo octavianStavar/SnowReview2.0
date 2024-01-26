@@ -27,7 +27,7 @@ public class TodoItemDatabase
     public async Task<List<TodoItem>> GetItemsNotDoneAsync()
     {
         await Init();
-        return await Database.Table<TodoItem>().Where(t => t.Done).ToListAsync();
+        return await Database.QueryAsync<TodoItem>("SELECT * FROM [TodoItem] WHERE [Done] = 1");
     }
 
     public async Task<List<TodoItem>> GetItemsDoneAsync()
@@ -39,7 +39,7 @@ public class TodoItemDatabase
     public async Task<TodoItem> GetItemAsync(int id)
     {
         await Init();
-        return await Database.Table<TodoItem>().Where(i => i.ID == id).FirstOrDefaultAsync();
+        return await Database.GetAsync<TodoItem>(id);
     }
 
     public async Task<int> SaveItemAsync(TodoItem item)
